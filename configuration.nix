@@ -14,13 +14,10 @@
   # Set your time zone.
   time.timeZone = "Asia/Tashkent";
 
-  # programs.nix-data = {
-  #   enable = true;
-  #   systemconfig = "/home/muhammad/workplace/sud0pacman/confs/modules/nixos/apps/default.nix";
-  #   flake = "/home/muhammad/workplace/sud0pacman/nix-config/flake.nix";
-  #   flakearg = "arava";
-  # };
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8"; # or change to "en_US.UTF-8" or "ru_RU.UTF-8" or "uz_UZ.UTF-8"
 
+  # Enable the Flakes feature and the accompanying new nix command-line tool
   nix.settings.experimental-features = [
     "flakes" 
     "nix-command"
@@ -162,6 +159,20 @@
 
   # Select host type for the system
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.muhammad = {
+    isNormalUser = true;
+    description = "Muhammad";
+    extraGroups = ["networkmanager" "wheel"];
+    shell = pkgs.zsh;
+    packages = with pkgs; [
+      thunderbird
+    ];
+  };
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
