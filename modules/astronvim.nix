@@ -1,6 +1,6 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   xdg.configFile.astronvim = {
-    source = ../astronvim;
+    source = ./AstroNvim;
     recursive = true;
   };
 
@@ -14,7 +14,8 @@
       "astronvim"
     ];
 
-    extraConfig = "";
+    extraConfig = ''
+    '';
 
     extraPackages = with pkgs; [
       nodejs
@@ -25,6 +26,7 @@
       gdu
       lazygit
       python3
+      ripgrep
 
       lua-language-server
       luarocks
