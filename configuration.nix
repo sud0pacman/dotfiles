@@ -11,6 +11,9 @@
 
   networking.hostName = "arava";
 
+  # Set your time zone.
+  time.timeZone = "Asia/Tashkent";
+
   # programs.nix-data = {
   #   enable = true;
   #   systemconfig = "/home/muhammad/workplace/sud0pacman/confs/modules/nixos/apps/default.nix";
