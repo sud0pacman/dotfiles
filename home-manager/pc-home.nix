@@ -16,23 +16,13 @@
     krb5 # Provides Kerberos support libraries
     winetricks # Useful for further troubleshooting
     protontricks
-
     gnome-builder
-    fractal
     authenticator
     libreoffice
     gnome-boxes
-    prismlauncher
     thunderbird
     onlyoffice-desktopeditors
-    postman
-    # googleearth-pro
-    google-chrome
-    chromium
-    github-desktop
     element-desktop
-    telegram-desktop
-    discord
     gnome-solanum
     icon-library
     calamares-nixos
@@ -40,25 +30,14 @@
     cambalache
     adwsteamgtk
     bustle
-    firefox
     gradia
     cpu-x
     sqlitebrowser
     android-studio
-    scrcpy
     android-tools
-    telegram-desktop
-    # poedit.override { boo}
   ];
 
   xdg.enable = true;
-
-  # home.activation.linkDesktopApps = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-  #   mkdir -p "$HOME/.local/share/applications"
-  #   for f in $HOME/.nix-profile/share/applications/*.desktop; do
-  #     ln -sf "$f" "$HOME/.local/share/applications/$(basename "$f")"
-  #   done
-  # '';
 
   programs.home-manager.enable = true;
 }
