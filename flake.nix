@@ -25,6 +25,7 @@
       modules = [
         ./configuration.nix
       ];
+      specialArgs = {inherit inputs;};
     };
 
     homeConfigurations.amper = home-manager.lib.homeManagerConfiguration {

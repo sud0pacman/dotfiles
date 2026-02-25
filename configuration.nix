@@ -17,6 +17,11 @@
   #   flakearg = "arava";
   # };
 
+  nix.settings.experimental-features = [
+    "flakes" 
+    "nix-command"
+  ];
+
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs;
     [
