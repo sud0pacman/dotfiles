@@ -23,6 +23,12 @@
     "nix-command"
   ];
 
+   xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+    config.common.default = "gnome";
+  };
+
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     aapt
@@ -104,7 +110,6 @@
 
   # System Packages
   environment.systemPackages = with pkgs; [
-    neovim
     fastfetch
     gnome-tweaks
     gnome-extension-manager
