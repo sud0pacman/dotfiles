@@ -1,4 +1,9 @@
-{ pkgs, ... }: pkgs.mkShell {
+{
+  self,
+  pkgs,
+  ...
+}:
+pkgs.mkShell {
   packages = with pkgs; [
     self.formatter.${system}
 
@@ -7,4 +12,4 @@
     deadnix
     nixfmt-tree
   ];
-};
+}

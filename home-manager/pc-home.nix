@@ -1,5 +1,10 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   home.stateVersion = "25.11";
+
+  imports = [
+    ./shared.nix
+  ];
 
   home.username = "muhammad";
   home.homeDirectory = "/home/muhammad";
@@ -42,7 +47,7 @@
     android-studio
     scrcpy
     android-tools
-    qemu
+    telegram-desktop
     # poedit.override { boo}
   ];
 

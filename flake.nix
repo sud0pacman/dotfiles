@@ -15,11 +15,12 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , nixpkgs-stable
-    , home-manager
-    , ...
+    {
+      self,
+      nixpkgs,
+      nixpkgs-stable,
+      home-manager,
+      ...
     }@inputs:
 
     let
@@ -29,34 +30,30 @@
     {
 
       # nixos - system hostname
-      nixosConfigurations.arava = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./configuration.nix
+      # nixosConfigurations.arava = nixpkgs.lib.nixosSystem {
+      #   modules = [
+      #     ./configuration.nix
 
-          home-manager.nixosModules.home-manager
+      #     home-manager.nixosModules.home-manager
 
-          {
+      #     {
 
-            home-manager = {
-              useGlobalPkgs = true;
-              # useUserPackages = true;
-              # backupFileExtension = "backup";
+      #       home-manager = {
+      #         useGlobalPkgs = true;
+      #         # useUserPackages = true;
+      #         # backupFileExtension = "backup";
 
-              extraSpecialArgs = { inherit inputs; };
-              users.muhammad = import ./home.nix;
-            };
-          }
-        ];
-        specialArgs = { inherit inputs; };
-      };
-
-      # homeConfigurations.muhammad = home-manager.lib.homeManagerConfiguration {
-      #   inherit pkgs;
-      #   # Specify your home configuration modules here
-      #   modules = [ ./home.nix ];
+      #         extraSpecialArgs = { inherit inputs; };
+      #         users.muhammad = import ./home.nix;
+      #       };
+      #     }
+      #   ];
+      #   specialArgs = { inherit inputs; };
       # };
 
+      nixosConfigurations.arava = import ./hosts/tower inputs;
+
       formatter.${system} = pkgs.nixfmt;
-      devShells.${system}.default = import ./shell.nix { inherit pkgs; };
+      devShells.${system}.default = import ./shell.nix { inherit self pkgs; };
     };
 }

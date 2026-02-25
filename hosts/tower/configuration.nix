@@ -1,8 +1,10 @@
-{ config
-, lib
-, pkgs
-, ...
-}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   imports = [
     ./hardware-configuration.nix
   ];
@@ -22,11 +24,9 @@
   ];
 
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs;
-    [
-      aapt
-    ];
-
+  programs.nix-ld.libraries = with pkgs; [
+    aapt
+  ];
 
   services = {
     samba = {
@@ -73,7 +73,7 @@
   # Boot loader
   boot = {
     loader = {
-      # After going back to bootloader, run this: 
+      # After going back to bootloader, run this:
       # nixos-rebuild switch --install-bootloader
       systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
@@ -112,6 +112,9 @@
     home-manager
     chromium
     direnv
+    git
+    ripgrep
+    nixpkgs-fmt
     #git
     #rustup
     #gcc
@@ -165,7 +168,10 @@
   users.users.muhammad = {
     isNormalUser = true;
     description = "Muhammad";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       thunderbird
