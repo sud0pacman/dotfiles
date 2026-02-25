@@ -1,9 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }: {
   imports = [
     ./hardware-configuration.nix
@@ -19,7 +17,7 @@
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
   nix.settings.experimental-features = [
-    "flakes" 
+    "flakes"
     "nix-command"
   ];
 
@@ -71,7 +69,7 @@
   };
 
   programs.adb.enable = true;
-  
+
   # Boot loader
   boot = {
     loader = {
@@ -81,7 +79,7 @@
       efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
-        devices = ["nodev"];
+        devices = [ "nodev" ];
         useOSProber = true;
         efiSupport = true;
         theme = "${
@@ -112,6 +110,8 @@
     gnome-extension-manager
     ghostty
     home-manager
+    chromium
+    direnv
     #git
     #rustup
     #gcc
@@ -161,10 +161,11 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.zsh.enable = true;
   users.users.muhammad = {
     isNormalUser = true;
     description = "Muhammad";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       thunderbird

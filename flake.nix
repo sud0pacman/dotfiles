@@ -14,25 +14,49 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
+  outputs =
+    { self
+    , nixpkgs
+    , nixpkgs-stable
+    , home-manager
+    , ...
+    }@inputs:
 
     let
       system = "x86_64-linux";
-    in {
-
-    # nixos - system hostname
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      modules = [
-        ./configuration.nix
-      ];
-      specialArgs = {inherit inputs;};
-    };
-
-    homeConfigurations.amper = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      modules = [ ./home-manager/home.nix ];
-    };
+    in
+    {
 
-    
-  };
+      # nixos - system hostname
+      nixosConfigurations.arava = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./configuration.nix
+
+          home-manager.nixosModules.home-manager
+
+          {
+
+            home-manager = {
+              useGlobalPkgs = true;
+              # useUserPackages = true;
+              # backupFileExtension = "backup";
+
+              extraSpecialArgs = { inherit inputs; };
+              users.muhammad = import ./home.nix;
+            };
+          }
+        ];
+        specialArgs = { inherit inputs; };
+      };
+
+      # homeConfigurations.muhammad = home-manager.lib.homeManagerConfiguration {
+      #   inherit pkgs;
+      #   # Specify your home configuration modules here
+      #   modules = [ ./home.nix ];
+      # };
+
+      formatter.${system} = pkgs.nixfmt;
+      devShells.${system}.default = import ./shell.nix { inherit pkgs; };
+    };
 }

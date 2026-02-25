@@ -1,13 +1,12 @@
-{
-  disks ? [
+{ disks ? [
     # 1TB SATA
     "/dev/sda"
 
     # 2TB HDD
     # this storega now used for windows
     # "/dev/sdb"
-  ],
-  ...
+  ]
+, ...
 }: {
   disko.devices = {
     disk = {
@@ -24,7 +23,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = ["umask=0077"];
+                mountOptions = [ "umask=0077" ];
               };
             };
             SWAP = {

@@ -1,5 +1,8 @@
-{} : {
+{ config, pkgs, ... }: {
   home.stateVersion = "25.11";
+
+  home.username = "muhammad";
+  home.homeDirectory = "/home/muhammad";
 
   home.packages = with pkgs; [
     # support both 32-bit and 64-bit applications
@@ -45,12 +48,12 @@
 
   xdg.enable = true;
 
-  home.activation.linkDesktopApps = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    mkdir -p "$HOME/.local/share/applications"
-    for f in $HOME/.nix-profile/share/applications/*.desktop; do
-      ln -sf "$f" "$HOME/.local/share/applications/$(basename "$f")"
-    done
-  '';
+  # home.activation.linkDesktopApps = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  #   mkdir -p "$HOME/.local/share/applications"
+  #   for f in $HOME/.nix-profile/share/applications/*.desktop; do
+  #     ln -sf "$f" "$HOME/.local/share/applications/$(basename "$f")"
+  #   done
+  # '';
 
-  
+  programs.home-manager.enable = true;
 }
