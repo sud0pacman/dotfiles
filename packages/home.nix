@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... } : let system = pkgs.system; in {
+{ pkgs, ... } : {
   home.packages = with pkgs; [
     zip
 

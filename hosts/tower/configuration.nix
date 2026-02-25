@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -23,7 +22,7 @@
     "nix-command"
   ];
 
-   xdg.portal = {
+  xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
     config.common.default = "gnome";
@@ -120,6 +119,9 @@
     git
     ripgrep
     nixpkgs-fmt
+    nixd
+    zed-editor
+    arp-scan
     #git
     #rustup
     #gcc
