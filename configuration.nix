@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+
   ...
 }: {
   imports = [
@@ -103,8 +104,21 @@
     initrd.verbose = false;
   };
 
-  # remove all gnome utility apps
-  # services.gnome.core-utilities.enable = false;
+  # System Packages
+  environment.systemPackages = with pkgs; [
+    neovim
+    fastfetch
+    gnome-tweaks
+    gnome-extension-manager
+    ghostty
+    home-manager
+    #git
+    #rustup
+    #gcc
+    # gnome-builder
+    # flatpak
+    # flatpak-builder
+  ];
 
   # Select host type for the system
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
