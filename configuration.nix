@@ -120,6 +120,43 @@
     # flatpak-builder
   ];
 
+  services = {
+    xserver = {
+      enable = true;
+      xkb = {
+        layout = "us,ru";
+        options = "caps:escape,grp:alt_shift_toggle";
+        variant = "altgr-intl,,";
+      };
+
+      # videoDrivers = ["nvidia"];
+    };
+    desktopManager.gnome = {
+      enable = true;
+    };
+    displayManager = {
+      gdm.enable = true;
+    };
+  };
+
+  # gnome packages setup
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-photos
+    gnome-tour
+    gedit
+    cheese
+    gnome-music
+    epiphany
+    geary
+    evince
+    totem
+    tali
+    iagno
+    hitori
+    atomix
+    seahorse
+  ];
+
   # Select host type for the system
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
