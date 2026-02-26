@@ -35,6 +35,13 @@
   ];
 
   services = {
+    desktopManager.gnome = {
+      enable = true;
+    };
+    displayManager = {
+      gdm.enable = true;
+    };
+
     samba = {
       enable = true;
       package = pkgs.samba4Full;
@@ -118,23 +125,6 @@
     zed-editor
     arp-scan
   ];
-
-  services = {
-    # xserver = {
-    #   enable = true;
-    #   xkb = {
-    #     layout = "us,ru";
-    #     options = "caps:escape,grp:alt_shift_toggle";
-    #     variant = "altgr-intl,,";
-    #   };
-    # };
-    desktopManager.gnome = {
-      enable = true;
-    };
-    displayManager = {
-      gdm.enable = true;
-    };
-  };
 
   # gnome packages setup
   environment.gnome.excludePackages = with pkgs; [

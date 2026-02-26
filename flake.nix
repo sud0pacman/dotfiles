@@ -8,7 +8,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,28 +28,6 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-
-      # nixos - system hostname
-      # nixosConfigurations.arava = nixpkgs.lib.nixosSystem {
-      #   modules = [
-      #     ./configuration.nix
-
-      #     home-manager.nixosModules.home-manager
-
-      #     {
-
-      #       home-manager = {
-      #         useGlobalPkgs = true;
-      #         # useUserPackages = true;
-      #         # backupFileExtension = "backup";
-
-      #         extraSpecialArgs = { inherit inputs; };
-      #         users.muhammad = import ./home.nix;
-      #       };
-      #     }
-      #   ];
-      #   specialArgs = { inherit inputs; };
-      # };
 
       nixosConfigurations.arava = import ./hosts/tower inputs;
 

@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   xdg.configFile.astronvim = {
     source = ../AstroNvim;
     recursive = true;
@@ -14,8 +15,7 @@
       "astronvim"
     ];
 
-    extraConfig = ''
-    '';
+    extraConfig = "";
 
     extraPackages = with pkgs; [
       nodejs

@@ -1,4 +1,5 @@
-{ pkgs, ... } : {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     zip
 
@@ -9,7 +10,7 @@
 
     telegram-desktop
     fractal
-    
+
     google-chrome
     chromium
     firefox

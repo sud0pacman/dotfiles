@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   services.xserver = {
     enable = true;
 
@@ -7,7 +8,10 @@
       options = "caps:escape,grp:alt_shift_toggle";
       extraLayouts.uz = {
         description = "Uzbek (Oʻzbekiston)";
-        languages = ["eng" "uzb"];
+        languages = [
+          "eng"
+          "uzb"
+        ];
         symbolsFile = ./uz;
       };
       layout = "uz,us";
