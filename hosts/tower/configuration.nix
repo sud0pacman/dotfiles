@@ -53,12 +53,6 @@
           "comment" = "Hello World!";
           "browseable" = "yes";
         };
-        # fayllar = {
-        #   "path" = "/media/fayllar";
-        #   "writable" = "yes";
-        #   "comment" = "Hello World!";
-        #   "browseable" = "yes";
-        # };
       };
     };
     samba-wsdd = {
@@ -122,25 +116,17 @@
     nixd
     zed-editor
     arp-scan
-    #git
-    #rustup
-    #gcc
-    # gnome-builder
-    # flatpak
-    # flatpak-builder
   ];
 
   services = {
-    xserver = {
-      enable = true;
-      xkb = {
-        layout = "us,ru";
-        options = "caps:escape,grp:alt_shift_toggle";
-        variant = "altgr-intl,,";
-      };
-
-      # videoDrivers = ["nvidia"];
-    };
+    # xserver = {
+    #   enable = true;
+    #   xkb = {
+    #     layout = "us,ru";
+    #     options = "caps:escape,grp:alt_shift_toggle";
+    #     variant = "altgr-intl,,";
+    #   };
+    # };
     desktopManager.gnome = {
       enable = true;
     };
