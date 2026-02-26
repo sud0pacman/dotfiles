@@ -7,5 +7,6 @@
     ../modules/astronvim.nix
     ../modules/vscode.nix
     ../modules/zsh.nix
+    ../modules/ghostty.nix
   ];
 }
