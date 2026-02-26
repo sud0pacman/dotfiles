@@ -9,8 +9,8 @@
       extraLayouts.uz = {
         description = "Uzbek (Oʻzbekiston)";
         languages = [
-          "eng"
-          "uzb"
+          "en"
+          "uz"
         ];
         symbolsFile = ./uz;
       };
