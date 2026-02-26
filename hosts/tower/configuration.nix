@@ -6,6 +6,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../keyboards/keyboard.nix
   ];
 
   networking.hostName = "arava";
