@@ -109,6 +109,24 @@
     initrd.verbose = false;
   };
 
+  programs.dconf.enable = true;
+
+  users.users.gcis = {
+    isSystemUser = true;  # Add this (or isNormalUser = true;)
+    group = "gcis";       # Add this
+    extraGroups = [ "libvirtd" ];
+  };
+  users.groups.gcis = {}; # Ensure the group exists
+
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+    };
+    spiceUSBRedirection.enable = true;
+  };
+  services.spice-vdagentd.enable = true;
+
+
   # System Packages
   environment.systemPackages = with pkgs; [
     fastfetch
@@ -124,6 +142,15 @@
     nixd
     zed-editor
     arp-scan
+
+    virt-manager
+    virt-viewer
+    spice 
+    spice-gtk
+    spice-protocol
+    virtio-win
+    win-spice
+    pkgs.adwaita-icon-theme
   ];
 
   # gnome packages setup
@@ -155,6 +182,8 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "libvirtd" 
+      "kvm"
     ];
     shell = pkgs.zsh;
     packages = with pkgs; [
