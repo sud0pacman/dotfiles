@@ -9,6 +9,9 @@
     ../../keyboards/keyboard.nix
   ];
 
+  home-manager.backupFileExtension = "backup";
+
+
   networking.hostName = "arava";
 
   # Set your time zone.

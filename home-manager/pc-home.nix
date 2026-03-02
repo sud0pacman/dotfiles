@@ -35,6 +35,7 @@
     sqlitebrowser
     android-studio
     android-tools
+    quickemu
   ];
 
   programs.home-manager.enable = true;
