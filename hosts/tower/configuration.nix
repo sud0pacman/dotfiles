@@ -153,6 +153,8 @@
     pkgs.adwaita-icon-theme
   ];
 
+  programs.direnv.enable = true;
+
   # gnome packages setup
   environment.gnome.excludePackages = with pkgs; [
     gnome-photos
