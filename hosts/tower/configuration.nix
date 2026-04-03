@@ -6,11 +6,14 @@
 {
   imports = [
     ./hardware-configuration.nix
+
+    # Fonts
+    ../../extra/fonts.nix
+
     ../../keyboards/keyboard.nix
   ];
 
   home-manager.backupFileExtension = "backup";
-
 
   networking.hostName = "arava";
 
@@ -115,11 +118,11 @@
   programs.dconf.enable = true;
 
   users.users.gcis = {
-    isSystemUser = true;  # Add this (or isNormalUser = true;)
-    group = "gcis";       # Add this
+    isSystemUser = true; # Add this (or isNormalUser = true;)
+    group = "gcis"; # Add this
     extraGroups = [ "libvirtd" ];
   };
-  users.groups.gcis = {}; # Ensure the group exists
+  users.groups.gcis = { }; # Ensure the group exists
 
   virtualisation = {
     libvirtd = {
@@ -128,7 +131,6 @@
     spiceUSBRedirection.enable = true;
   };
   services.spice-vdagentd.enable = true;
-
 
   # System Packages
   environment.systemPackages = with pkgs; [
@@ -148,15 +150,24 @@
 
     virt-manager
     virt-viewer
-    spice 
+    spice
     spice-gtk
     spice-protocol
     virtio-win
     win-spice
     pkgs.adwaita-icon-theme
+    clang
+    gcc
+    cmake
   ];
 
   programs.direnv.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Optional: For remote play
+    dedicatedServer.openFirewall = true; # Optional: For dedicated server
+  };
 
   # gnome packages setup
   environment.gnome.excludePackages = with pkgs; [
@@ -187,7 +198,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-      "libvirtd" 
+      "libvirtd"
       "kvm"
     ];
     shell = pkgs.zsh;

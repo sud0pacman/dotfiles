@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.ghostty = {
     enable = true;
     enableZshIntegration = true;
@@ -7,7 +8,7 @@
       font-family = "Iosevka";
       # font-family = "SF Mono";
 
-      gtk-titlebar = false;
+      gtk-titlebar = true;
 
       keybind = [
         # Switching in-tab splits

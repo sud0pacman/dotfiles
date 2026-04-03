@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.stateVersion = "25.11";
 
   imports = [
@@ -36,6 +35,7 @@
     android-studio
     android-tools
     quickemu
+    fluffychat
   ];
 
   programs.home-manager.enable = true;
