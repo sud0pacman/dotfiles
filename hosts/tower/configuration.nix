@@ -4,6 +4,13 @@
   ...
 }:
 {
+  nixpkgs.config = {
+    permittedInsecurePackages = ["ventoy-gtk3-1.1.07"];
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "ventoy-gtk3"
+    ];
+  };
+
   imports = [
     ./hardware-configuration.nix
 
@@ -159,6 +166,7 @@
     clang
     gcc
     cmake
+    ventoy-full-gtk
   ];
 
   programs.direnv.enable = true;
